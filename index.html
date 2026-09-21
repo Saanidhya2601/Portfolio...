@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saanidhya Chauhan — Full-Stack Developer</title>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme =
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <button class="nav-brand" data-i="0">SC</button>
+      <div class="nav-links" id="navLinks">
+        <button data-i="0" class="active">Home</button>
+        <button data-i="1">About</button>
+        <button data-i="2">Experience</button>
+        <button data-i="3">Projects</button>
+        <button data-i="4">Skills</button>
+        <button data-i="5">Contact</button>
+      </div>
+      <div class="nav-actions">
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle color theme"
+        >
+          <svg
+            class="icon-sun"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          >
+            <circle cx="12" cy="12" r="4.2" />
+            <path
+              d="M12 2.5v2.6M12 18.9v2.6M4.2 4.2l1.9 1.9M17.9 17.9l1.9 1.9M2.5 12h2.6M18.9 12h2.6M4.2 19.8l1.9-1.9M17.9 6.1l1.9-1.9"
+            />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.5 14.6A8.1 8.1 0 0 1 9.4 3.5a.6.6 0 0 0-.7-.9A9.9 9.9 0 1 0 21.4 15.3a.6.6 0 0 0-.9-.7Z"
+            />
+          </svg>
+        </button>
+        <button class="nav-burger" id="navBurger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="nav-mobile" id="navMobile">
+      <button data-i="0" class="active">Home</button>
+      <button data-i="1">About</button>
+      <button data-i="2">Experience</button>
+      <button data-i="3">Projects</button>
+      <button data-i="4">Skills</button>
+      <button data-i="5">Contact</button>
+    </div>
+
+    <div class="progress-rail">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="scrollcue"><span>SCROLL</span><span class="stick"></span></div>
+
+    <div class="pin-wrapper" id="pinWrapper">
+      <div class="track" id="track">
+        <!-- HERO -->
+        <section class="panel hero" id="p0">
+          <div class="hero-inner">
+            <div>
+              <h1 class="hero-name">Saanidhya<br />Chauhan</h1>
+              <p class="hero-role">Software / Full-Stack Developer</p>
+              <p class="hero-line">
+                Building responsive, production-ready web apps with React,
+                Next.js and Node — backed by strong database fundamentals in
+                PostgreSQL, MongoDB and Supabase. I care about reusable
+                components, APIs that don't break when someone else touches
+                them, and getting the database shape right before writing a
+                single line of frontend code.
+              </p>
+              <div class="hero-links">
+                <a
+                  class="icon-link"
+                  href="mailto:saanidhyachauhan35@gmail.com"
+                  aria-label="Email"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="2.5" y="4.5" width="19" height="15" rx="1.5" />
+                    <path d="M3.5 6.5l8.5 7 8.5-7" />
+                  </svg>
+                </a>
+                <a
+                  class="icon-link"
+                  href="https://github.com/Saanidhya2601"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="GitHub"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  class="icon-link"
+                  href="Saanidhya_Chauhan_Resume.pdf"
+                  download="Saanidhya_Chauhan_Resume.pdf"
+                  aria-label="Download resume"
+                  ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 3v12" />
+                    <path d="M7 10l5 5 5-5" />
+                    <path d="M4 19.5h16" /></svg
+                ></a>
+              </div>
+            </div>
+            <div class="hero-photo-wrap" id="heroPhoto">
+              <img src="your-photo.jpg" alt="Saanidhya Chauhan" />
+            </div>
+          </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="panel about" id="p1">
+          <div class="about-inner">
+            <p class="kicker"><span class="idx">01</span> — About</p>
+            <p class="about-body">
+              Full-stack developer who likes
+              <span>owning things end to end</span> — from a normalized,
+              access-controlled schema to the interface someone actually clicks
+              on.
+            </p>
+            <p class="about-sub">
+              Most of that shows up across two internships and a handful of
+              self-directed projects — a data pipeline processing 320K+ records,
+              an LMS with real auth and role-based access, and a couple of
+              automation tools that quietly save someone a few hours a week.
+            </p>
+            <div class="about-meta">
+              <div>
+                <p>Based in</p>
+                <p>Pune, India</p>
+              </div>
+              <div>
+                <p>Education</p>
+                <p>B.Tech CSE, Uttaranchal University</p>
+              </div>
+              <div>
+                <p>Graduated</p>
+                <p>May 2026</p>
+              </div>
+              <div>
+                <p>Core stack</p>
+                <p>React · Node.js · PostgreSQL</p>
+              </div>
+              <div>
+                <p>Focused on</p>
+                <p>Full-stack &amp; data / ops roles</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="panel experience" id="p2">
+          <div class="exp-inner">
+            <p class="kicker"><span class="idx">02</span> — Experience</p>
+            <div class="exp-head">
+              <div>
+                <h2 class="exp-role">Software / Full-Stack Intern</h2>
+                <p class="exp-co">The Boring Education</p>
+              </div>
+              <p class="exp-time">Feb 2026 – Jul 2026 · 6 months</p>
+            </div>
+            <p class="exp-stack">
+              React.js · Next.js · TypeScript · Tailwind CSS · Node.js · REST
+              APIs · Git/GitHub · AI APIs
+            </p>
+            <ul class="exp-list">
+              <li>
+                Built and maintained React.js and Next.js pages with TypeScript
+                and Tailwind, keeping layouts responsive across desktop and
+                mobile.
+              </li>
+              <li>
+                Refactored existing components into a reusable UI set, cutting
+                duplicate code and speeding up later feature work.
+              </li>
+              <li>
+                Integrated REST APIs to fetch, process and render application
+                data, coordinating with backend engineers on response formats
+                and error handling.
+              </li>
+              <li>
+                Extended Next.js routing and server-side logic for new modules,
+                working through code review with senior developers before merge.
+              </li>
+              <li>
+                Debugged frontend, layout and API integration issues found in
+                testing, cutting bug carryover into later cycles.
+              </li>
+              <li>
+                Managed version control through Git and GitHub — feature
+                branching, pull requests, and keeping changes easy to roll back.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="panel projects" id="p3">
+          <div class="proj-inner">
+            <p class="kicker"><span class="idx">03</span> — Projects</p>
+            <p class="proj-hint">
+              hover a folder to peek inside · click one to open it
+            </p>
+            <div class="folder-grid" id="folderGrid">
+              <div class="folder" data-name="TimeChamp">
+                <div class="folder-files">
+                  <p>
+                    Full-stack HR &amp; workforce management system with
+                    real-time dashboards.
+                  </p>
+                  <ul>
+                    <li>
+                      Productivity/HR system with dashboards for real-time
+                      workforce monitoring
+                    </li>
+                    <li>
+                      Recharts analytics surfacing time allocation &amp; task
+                      productivity insights
+                    </li>
+                    <li>
+                      Type-safe stack: React 18, TypeScript, Supabase, Radix UI,
+                      Tailwind
+                    </li>
+                  </ul>
+                  <a class="repo-link" href="#" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+                      />
+                    </svg>
+                    View on GitHub
+                  </a>
+                </div>
+                <div class="folder-front">
+                  <span class="folder-name">TimeChamp</span>
+                  <span class="folder-tech"
+                    >React 18 · Vite · Supabase · TanStack Query</span
+                  >
+                </div>
+              </div>
+
+              <div class="folder" data-name="Crime Reports DB">
+                <div class="folder-files">
+                  <p>
+                    PostgreSQL data-engineering project on 320K+ real crime
+                    records.
+                  </p>
+                  <ul>
+                    <li>
+                      Normalized DB ingesting 320,000+ records via a
+                      staging-table pipeline
+                    </li>
+                    <li>
+                      RBAC with separate read-only / read-write user groups
+                    </li>
+                    <li>
+                      12 analytical queries using window functions, CTEs &amp;
+                      aggregate filters
+                    </li>
+                  </ul>
+                  <a class="repo-link" href="#" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+                      />
+                    </svg>
+                    View on GitHub
+                  </a>
+                </div>
+                <div class="folder-front">
+                  <span class="folder-name">Crime Reports DB</span>
+                  <span class="folder-tech">PostgreSQL · SQL · pgAdmin 4</span>
+                </div>
+              </div>
+
+              <div class="folder" data-name="AutoReporter">
+                <div class="folder-files">
+                  <p>
+                    Automation pipeline generating scheduled PDF reports from
+                    workforce data.
+                  </p>
+                  <ul>
+                    <li>
+                      Pandas + Jinja2 for KPI processing and report rendering
+                    </li>
+                    <li>
+                      pdfkit / wkhtmltopdf to render PDF output from HTML
+                      templates
+                    </li>
+                    <li>
+                      APScheduler + SMTP for automated weekly email dispatch
+                    </li>
+                  </ul>
+                  <a class="repo-link" href="#" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+                      />
+                    </svg>
+                    View on GitHub
+                  </a>
+                </div>
+                <div class="folder-front">
+                  <span class="folder-name">AutoReporter</span>
+                  <span class="folder-tech">Python · Pandas · Jinja2</span>
+                </div>
+              </div>
+
+              <div class="folder" data-name="Modern LMS">
+                <div class="folder-files">
+                  <p>
+                    Full-stack LMS for instructors to create, manage and publish
+                    courses.
+                  </p>
+                  <ul>
+                    <li>
+                      JWT auth + role-based authorization for students &amp;
+                      instructors
+                    </li>
+                    <li>
+                      Course creation, editing, publishing &amp; status tracking
+                      via Prisma
+                    </li>
+                    <li>
+                      Responsive instructor workspace with sidebar nav &amp;
+                      dashboard
+                    </li>
+                  </ul>
+                  <a class="repo-link" href="#" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
+                      />
+                    </svg>
+                    View on GitHub
+                  </a>
+                </div>
+                <div class="folder-front">
+                  <span class="folder-name">Modern LMS</span>
+                  <span class="folder-tech"
+                    >React · Node · Express · Prisma</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="panel skills" id="p4">
+          <div class="skills-inner">
+            <p class="kicker"><span class="idx">04</span> — Skills</p>
+            <div class="skill-groups">
+              <div class="skill-group">
+                <p class="label">Languages</p>
+                <div class="chip-row">
+                  <span class="chip">Java</span><span class="chip">Python</span>
+                  <span class="chip">JavaScript</span
+                  ><span class="chip">TypeScript</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <p class="label">Frontend</p>
+                <div class="chip-row">
+                  <span class="chip">React 18</span
+                  ><span class="chip">Next.js</span>
+                  <span class="chip">Tailwind CSS</span
+                  ><span class="chip">Three.js</span>
+                  <span class="chip">Radix UI</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <p class="label">Backend</p>
+                <div class="chip-row">
+                  <span class="chip">Node.js</span
+                  ><span class="chip">Express.js</span>
+                  <span class="chip">Bun</span
+                  ><span class="chip">REST APIs</span>
+                  <span class="chip">Supabase</span
+                  ><span class="chip">Firebase</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <p class="label">Databases &amp; Data</p>
+                <div class="chip-row">
+                  <span class="chip">PostgreSQL</span
+                  ><span class="chip">MySQL</span>
+                  <span class="chip">MongoDB</span
+                  ><span class="chip">Pandas</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <p class="label">Tools</p>
+                <div class="chip-row">
+                  <span class="chip">Git</span
+                  ><span class="chip">GitHub Actions</span>
+                  <span class="chip">Docker</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <p class="label">Practices</p>
+                <div class="chip-row">
+                  <span class="chip">JWT auth</span
+                  ><span class="chip">RBAC</span>
+                  <span class="chip">Component architecture</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="panel contact" id="p5">
+          <div class="contact-inner">
+            <p class="kicker"><span class="idx">05</span> — Contact</p>
+            <p class="contact-big">
+              Open to full-stack &amp; data/ops roles in <a href="#">Pune</a>.
+              Let's talk.
+            </p>
+            <div class="contact-rows">
+              <div class="contact-row">
+                <span>Email</span
+                ><a href="mailto:saanidhyachauhan35@gmail.com"
+                  >saanidhyachauhan35@gmail.com</a
+                >
+              </div>
+              <div class="contact-row">
+                <span>Phone</span
+                ><a href="tel:+916395432731">+91 63954 32731</a>
+              </div>
+              <div class="contact-row">
+                <span>GitHub</span
+                ><a
+                  href="https://github.com/Saanidhya2601"
+                  target="_blank"
+                  rel="noopener"
+                  >github.com/Saanidhya2601</a
+                >
+              </div>
+              <div class="contact-row">
+                <span>Location</span><span>Pune, India</span>
+              </div>
+            </div>
+            <p class="foot-note">
+              B.Tech CSE, Uttaranchal University, Dehradun — 2022–2026
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
