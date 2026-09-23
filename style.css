@@ -574,7 +574,7 @@ h3 {
   background: var(--ink);
 }
 
-/* ---------- projects (folders) ---------- */
+/* ---------- projects (3D isometric) ---------- */
 .proj-inner {
   max-width: 1160px;
   width: 100%;
@@ -582,231 +582,251 @@ h3 {
 .proj-hint {
   font-size: 12px;
   color: var(--muted);
-  margin-bottom: 36px;
+  margin-bottom: 50px;
 }
-.folder-grid {
+.iso-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 34px 26px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px 26px;
   align-items: start;
+  perspective: 1200px;
 }
-@media (min-width: 769px) {
-  .folder.open .folder-files {
-    max-height: 34vh;
-    overflow-y: auto;
+@media (max-width: 1024px) {
+  .iso-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 30px;
   }
 }
-.folder {
+@media (max-width: 640px) {
+  .iso-grid {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+}
+.iso-wrapper {
   position: relative;
   cursor: pointer;
-  aspect-ratio: 5/4;
-  transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.24, 1);
-}
-/* the casual tilt only reads correctly at narrow (4-up) tile widths —
-     it's a fixed angle, and the same angle swings a wide tile's corners
-     much further, which is what was warping the shape as the grid narrowed */
-@media (min-width: 981px) {
-  .folder:not(.open):nth-child(1) {
-    transform: rotate(-1.4deg) translateY(4px);
-  }
-  .folder:not(.open):nth-child(2) {
-    transform: rotate(1deg) translateY(-6px);
-  }
-  .folder:not(.open):nth-child(3) {
-    transform: rotate(-0.8deg) translateY(8px);
-  }
-  .folder:not(.open):nth-child(4) {
-    transform: rotate(1.3deg) translateY(-2px);
-  }
-}
-@media (max-width: 980px) {
-  .folder-grid {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-}
-/* every hover-only affect below is gated on (hover:hover) so a tap on a touch
-     screen can never leave a folder "stuck" mid-hover — that stuck peek is what
-     was bleeding out of its folder and overlapping the one above it */
-@media (min-width: 981px) and (hover: hover) {
-  .folder:not(.open):hover {
-    transform: translateY(-8px) scale(1.035) rotate(0deg);
-  }
-}
-@media (min-width: 641px) and (max-width: 980px) and (hover: hover) {
-  .folder:not(.open):hover {
-    transform: translateY(-6px);
-  }
-}
-.folder-files {
-  position: absolute;
-  left: 9%;
-  right: 9%;
-  top: -26px;
-  height: 52%;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 9px 9px 5px 5px;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.09);
-  transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(0.22, 0.8, 0.24, 1);
-  padding: 14px 16px;
-  z-index: 1;
-  pointer-events: none;
-}
-/* the peek needs real vertical room above the folder to not collide with
-     whatever sits above it — only safe from the 2-up layout upward, and only
-     on devices that can actually hover (see note above) */
-@media (min-width: 641px) and (hover: hover) {
-  .folder:not(.open):hover .folder-files {
-    transform: translateY(0);
-  }
-}
-.folder-files p {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.5;
 }
 
-/* the folder body itself, with a tab cut into the top-left corner */
-.folder-front {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: var(--panel);
-  border: 1px solid var(--ink);
-  border-radius: 2px 12px 12px 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 16px 18px;
-  transition: box-shadow 0.3s ease;
+/* the tilted icon itself — purely visual, carries no text so it can never
+     hide information behind an opaque face */
+.iso-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  transform-style: preserve-3d;
 }
-.folder-front::before {
-  content: "";
+.iso-folder {
   position: absolute;
-  top: -13px;
-  left: 0;
-  width: 42%;
-  height: 13px;
-  background: var(--panel);
-  border: 1px solid var(--ink);
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
+  width: 75%;
+  height: 65%;
+  left: 12.5%;
+  top: 15%;
+  transform-style: preserve-3d;
+  transform: rotateX(55deg) rotateZ(-35deg);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 @media (hover: hover) {
-  .folder:not(.open):hover .folder-front {
-    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.08);
+  .iso-wrapper:hover .iso-folder {
+    transform: rotateX(55deg) rotateZ(-35deg) translateZ(18px);
   }
 }
-.folder-name {
-  font-family: var(--disp);
-  font-weight: 600;
-  font-size: 16px;
-  display: block;
+.iso-folder-back,
+.iso-folder-front {
+  position: absolute;
+  inset: 0;
+  background: var(--panel);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
 }
-.folder-tech {
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 4px;
-  display: block;
+.iso-folder-back {
+  transform: translateZ(0);
+}
+.iso-folder-front {
+  transform: translateZ(12px);
+  transform-origin: bottom;
+  transition: transform 0.4s ease;
+}
+.iso-folder-front::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: -2px;
+  width: 45%;
+  height: 14px;
+  background: var(--panel);
+  border: 2px solid var(--ink);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+}
+@media (hover: hover) {
+  .iso-wrapper:hover .iso-folder-front {
+    transform: translateZ(12px) rotateX(-12deg);
+  }
 }
 
-/* open state — lives on the single clicked folder, not the whole grid */
-.folder.open {
-  aspect-ratio: auto;
-  transform: none;
+/* flat caption below the icon — normal 2D text, never rotated, always legible */
+.iso-caption {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.iso-caption .iso-name {
+  font-family: var(--disp);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+}
+.iso-caption .iso-tech {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* the hover preview — a flat 2D card outside the 3D stack entirely, so it's
+     never subject to the folder's tilt and never gets hidden behind a face */
+.iso-preview {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 12px);
   z-index: 5;
-  grid-row: span 1;
-}
-.folder.open .folder-files {
-  position: relative;
-  inset: auto;
-  transform: none;
-  height: auto;
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 20px;
-  pointer-events: auto;
-  box-shadow: none;
-  border-color: var(--line);
-  animation: unfold 0.3s ease;
+  padding: 14px 16px;
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
-@keyframes unfold {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
+.iso-preview-name {
+  font-family: var(--disp);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.iso-preview-desc {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+@media (hover: hover) {
+  .iso-wrapper:hover .iso-preview {
     opacity: 1;
     transform: translateY(0);
   }
 }
-.folder.open .folder-front {
+
+/* ---------- project modal ---------- */
+.project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+:root[data-theme="dark"] .project-modal {
+  background: rgba(11, 11, 11, 0.85);
+}
+.project-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-content {
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  padding: 40px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
-  border-radius: 10px 10px 0 0;
-  padding: 16px 18px;
+  box-shadow: 14px 14px 0px rgba(0, 0, 0, 0.1);
 }
-.folder.open .folder-front::before {
-  display: none;
+:root[data-theme="dark"] .modal-content {
+  box-shadow: 14px 14px 0px rgba(255, 255, 255, 0.05);
 }
-.folder.open .folder-files ul {
+.project-modal.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--ink);
+  line-height: 1;
+}
+.modal-body h3 {
+  font-size: 26px;
+  margin-bottom: 8px;
+  font-family: var(--disp);
+  color: var(--ink);
+}
+.modal-body p.desc {
+  color: var(--muted);
+  margin-bottom: 24px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.modal-body ul {
   list-style: none;
-  margin-top: 10px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 12px;
 }
-.folder.open .folder-files ul li {
-  font-size: 12.5px;
+.modal-body ul li {
+  font-size: 15px;
   line-height: 1.5;
   color: var(--text);
-  padding-left: 14px;
   position: relative;
+  padding-left: 18px;
 }
-.folder.open .folder-files ul li::before {
+.modal-body ul li::before {
   content: "–";
   position: absolute;
   left: 0;
   color: var(--muted);
 }
-.folder:not(.open) .folder-files ul {
-  display: none;
-}
-.folder-files .repo-link {
+.modal-repo-link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 14px;
-  font-size: 12px;
+  gap: 8px;
   font-weight: 600;
-  border-bottom: 1px solid var(--ink);
+  font-size: 14px;
+  border-bottom: 2px solid var(--ink);
   padding-bottom: 2px;
+  color: var(--ink);
 }
-.folder-files .repo-link svg {
-  width: 13px;
-  height: 13px;
+.modal-repo-link svg {
+  width: 16px;
+  height: 16px;
 }
-.folder-files .repo-link:hover {
+.modal-repo-link:hover {
   color: var(--muted);
   border-color: var(--muted);
-}
-.folder:not(.open) .folder-files .repo-link {
-  display: none;
-}
-
-@media (max-width: 640px) {
-  .folder-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .folder:not(.open) {
-    aspect-ratio: auto;
-    height: 140px;
-  }
-  .folder.open .folder-files {
-    max-height: none;
-    overflow-y: visible;
-  }
 }
 
 /* ---------- skills ---------- */
