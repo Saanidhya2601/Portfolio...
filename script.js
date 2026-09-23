@@ -171,15 +171,33 @@
     }, 300);
   });
 
-  // projects: click a folder to open just that one; click it again to close it
-  var grid = document.getElementById("folderGrid");
-  grid.addEventListener("click", function (e) {
-    var folder = e.target.closest(".folder");
-    if (!folder) return;
-    folder.classList.toggle("open");
-    if (mainTrigger)
-      setTimeout(function () {
-        ScrollTrigger.refresh();
-      }, 320);
+  // 3D isometric projects -> modal
+  var isoWrappers = document.querySelectorAll(".iso-wrapper");
+  var projectModal = document.getElementById("projectModal");
+  var modalBody = document.getElementById("modalBody");
+  var closeModalBtn = document.getElementById("closeModal");
+
+  isoWrappers.forEach(function (wrapper) {
+    wrapper.addEventListener("click", function () {
+      var dataContent = wrapper.querySelector(".modal-data").innerHTML;
+      modalBody.innerHTML = dataContent;
+      projectModal.classList.add("active");
+    });
+  });
+
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", function () {
+      projectModal.classList.remove("active");
+    });
+  }
+
+  if (projectModal) {
+    projectModal.addEventListener("click", function (e) {
+      if (e.target === projectModal) projectModal.classList.remove("active");
+    });
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") projectModal.classList.remove("active");
   });
 })();
